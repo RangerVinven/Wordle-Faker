@@ -11,18 +11,18 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-
-  // Returns the colour to set each square to
-  Color getColour(int colourNum) {
-    if (colourNum == 0) {
-      return Colors.grey;
-    } else if (colourNum == 1) {
-      return Colors.yellow;
-    } else {
-      return Colors.green;
-    }
+// Returns the colour to set each square to
+Color getColour(int colourNum) {
+  if (colourNum == 0) {
+    return Colors.grey;
+  } else if (colourNum == 1) {
+    return Colors.yellow;
+  } else {
+    return Colors.green;
   }
+}
+
+class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class RowSquare extends StatefulWidget {
 }
 
 class _RowSquareState extends State<RowSquare> {
-  
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -113,7 +113,7 @@ class _RowSquareState extends State<RowSquare> {
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(100, 100),
           maximumSize: const Size(100, 100),
-          primary: Colors.grey,
+          primary: getColour(0),
           elevation: 0
         )
     );
