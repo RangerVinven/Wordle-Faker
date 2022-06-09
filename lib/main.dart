@@ -13,6 +13,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  // Returns the colour to set each square to
+  Color getColour(int colourNum) {
+    if (colourNum == 0) {
+      return Colors.grey;
+    } else if (colourNum == 1) {
+      return Colors.yellow;
+    } else {
+      return Colors.green;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,11 +35,10 @@ class _MyAppState extends State<MyApp> {
               const Text(
                 "Wordle Faker",
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold
                 ),
               ),
-              SizedBox(height: 30),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -94,6 +104,7 @@ class RowSquare extends StatefulWidget {
 }
 
 class _RowSquareState extends State<RowSquare> {
+  
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
