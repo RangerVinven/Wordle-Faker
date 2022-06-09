@@ -13,41 +13,49 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  double sizedBoxSize = 30;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  "Wordle Faker",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Wordle Faker",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold
                 ),
-                SizedBox(height: 30),
-                Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      BoxRow(),
-                      SizedBox(height: 30),
-                      BoxRow(),
-                      SizedBox(height: 30),
-                      BoxRow()
-                    ],
-                  ),
-                )
-              ],
-            ),
+              ),
+              SizedBox(height: 30),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BoxRow(),
+                    SizedBox(height: 30),
+                    BoxRow(),
+                    SizedBox(height: 30),
+                    BoxRow(),
+                    SizedBox(height: 80),
+                    TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.black
+                      ),
+                      child: const Text(
+                        "Share",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white
+                        ),
+                      )
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         )
       ),
@@ -92,9 +100,10 @@ class _RowSquareState extends State<RowSquare> {
         onPressed: () {},
         child: const Text(""),
         style: ElevatedButton.styleFrom(
-            minimumSize: const Size(100, 100),
-            maximumSize: const Size(100, 100),
-            primary: Colors.grey
+          minimumSize: const Size(100, 100),
+          maximumSize: const Size(100, 100),
+          primary: Colors.grey,
+          elevation: 0
         )
     );
   }
