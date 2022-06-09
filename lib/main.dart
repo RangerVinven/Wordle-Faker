@@ -43,12 +43,19 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BoxRow(),
-                    SizedBox(height: 30),
-                    BoxRow(),
-                    SizedBox(height: 30),
-                    BoxRow(),
-                    SizedBox(height: 80),
+                    const BoxRow(),
+                    const SizedBox(height: 30),
+                    const BoxRow(),
+                    const SizedBox(height: 30),
+                    const BoxRow(),
+                    const SizedBox(height: 30),
+                    const BoxRow(),
+                    const SizedBox(height: 30),
+                    const BoxRow(),
+                    const SizedBox(height: 30),
+                    const BoxRow(),
+
+                    const SizedBox(height: 50),
                     TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
@@ -91,6 +98,10 @@ class _BoxRowState extends State<BoxRow> {
         RowSquare(),
         SizedBox(width: 20),
         RowSquare(),
+        SizedBox(width: 20),
+        RowSquare(),
+        SizedBox(width: 20),
+        RowSquare(),
       ],
     );
   }
@@ -105,15 +116,23 @@ class RowSquare extends StatefulWidget {
 
 class _RowSquareState extends State<RowSquare> {
 
+  int colourNum = 0;
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            // Changes the colour of the button
+            colourNum == 2 ? colourNum = 0 : colourNum++;
+          });
+        },
+
         child: const Text(""),
         style: ElevatedButton.styleFrom(
-          minimumSize: const Size(100, 100),
-          maximumSize: const Size(100, 100),
-          primary: getColour(0),
+          minimumSize: const Size(50, 50),
+          maximumSize: const Size(50, 50),
+          primary: getColour(colourNum),
           elevation: 0
         )
     );
