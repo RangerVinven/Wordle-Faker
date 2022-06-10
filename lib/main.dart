@@ -21,6 +21,7 @@ Color getColour(int colourNum) {
     return Colors.green;
   }
 }
+List<List<int>> colours = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]];
 
 class _MyAppState extends State<MyApp> {
 
@@ -43,17 +44,17 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const BoxRow(),
+                    const BoxRow(row: 0),
                     const SizedBox(height: 30),
-                    const BoxRow(),
+                    const BoxRow(row: 1),
                     const SizedBox(height: 30),
-                    const BoxRow(),
+                    const BoxRow(row: 2),
                     const SizedBox(height: 30),
-                    const BoxRow(),
+                    const BoxRow(row: 3),
                     const SizedBox(height: 30),
-                    const BoxRow(),
+                    const BoxRow(row: 4),
                     const SizedBox(height: 30),
-                    const BoxRow(),
+                    const BoxRow(row: 5),
 
                     const SizedBox(height: 50),
                     TextButton(
@@ -81,34 +82,39 @@ class _MyAppState extends State<MyApp> {
 }
 
 class BoxRow extends StatefulWidget {
-  const BoxRow({Key? key}) : super(key: key);
+  final int row;
+  const BoxRow({Key? key, required this.row}) : super(key: key);
 
   @override
   State<BoxRow> createState() => _BoxRowState();
 }
 
 class _BoxRowState extends State<BoxRow> {
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        RowSquare(),
+        RowSquare(row: widget.row, column: 0),
         SizedBox(width: 20),
-        RowSquare(),
+        RowSquare(row: widget.row, column: 1),
         SizedBox(width: 20),
-        RowSquare(),
+        RowSquare(row: widget.row, column: 2),
         SizedBox(width: 20),
-        RowSquare(),
+        RowSquare(row: widget.row, column: 3),
         SizedBox(width: 20),
-        RowSquare(),
+        RowSquare(row: widget.row, column: 4),
       ],
     );
   }
 }
 
 class RowSquare extends StatefulWidget {
-  const RowSquare({Key? key}) : super(key: key);
+  final int row;
+  final int column;
+
+  const RowSquare({Key? key, required this.row, required this.column}) : super(key: key);
 
   @override
   State<RowSquare> createState() => _RowSquareState();
@@ -124,7 +130,7 @@ class _RowSquareState extends State<RowSquare> {
         onPressed: () {
           setState(() {
             // Changes the colour of the button
-            colourNum == 2 ? colourNum = 0 : colourNum++;
+            colours[widget.row][widget.column] == 2 ? colours[widget.row][widget.column] = 0 : colours[widget.row][widget.column]++;
           });
         },
 
@@ -132,7 +138,7 @@ class _RowSquareState extends State<RowSquare> {
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(50, 50),
           maximumSize: const Size(50, 50),
-          primary: getColour(colourNum),
+          primary: getColour(colours[widget.row][widget.column]),
           elevation: 0
         )
     );
